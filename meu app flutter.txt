@@ -1,0 +1,40 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Meu App Web Responsivo')),
+        body: Builder(
+          builder: (context) {
+            // Pegando o tamanho da tela
+            var largura = MediaQuery.of(context).size.width;
+
+            // Layout responsivo
+            if (largura < 600) {
+              return Column(
+                children: [
+                  Icon(Icons.phone_android, size: 100),
+                  Text('Modo Mobile', style: TextStyle(fontSize: 20)),
+                ],
+              );
+            } else {
+              return Row(
+                children: [
+                  Icon(Icons.computer, size: 100),
+                  SizedBox(width: 20),
+                  Text('Modo Desktop', style: TextStyle(fontSize: 20)),
+                ],
+              );
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
